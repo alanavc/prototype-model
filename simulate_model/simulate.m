@@ -17,7 +17,7 @@ F = -1*ones(tt_max,n);
 for i=1:n
     F(1:tt_sizes(1,i),i)=TRUTHTABLES{1,i}{1,2};
 end
-% disp(F)
+%disp(F)
 % Find nv and max indegree
 nv=zeros(1,n);
 for i=1:n
@@ -50,11 +50,17 @@ for i=1:n
 end
 
 % Embed system so that each node has same number of states
+%if max_indegree==0
+%    FF=-1*ones(1,n)
+%endif
+if isempty(p)
+    p=1;
+end
 FF=-1*ones(p^max_indegree,n);
 
 for i=1:n
     if ismember(i,constant_nodes)
-        FF(1:p,i)=0;
+        FF(1,i)=F(1,i);
     else
         for j=1:p^nv(i)
             x=dec2multistate(j-1,p,nv(i));
@@ -71,7 +77,7 @@ for i=1:n
         end
     end
 end
-
+%disp(FF)
 % SDDS simulations from given initialization
 if isempty(init_state)
     InitialState = dec2multistate(0-1,p,n);

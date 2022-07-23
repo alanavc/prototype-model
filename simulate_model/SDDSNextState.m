@@ -22,8 +22,13 @@ b = p.^(size(varF,1)-1:-1:0)';
 
 z = zeros(1,n);
 
+
 for i = 1 : n 
-    z(i) = F(x(varF(1:nv(i),i))*b(end-nv(i)+1:end)+1,i);        
+    if nv(i)==0
+        z(i) = F(1,i);
+    else
+        z(i) = F(x(varF(1:nv(i),i))*b(end-nv(i)+1:end)+1,i);     
+    end   
 end
 % disp(z);    
 % Update each node separately.

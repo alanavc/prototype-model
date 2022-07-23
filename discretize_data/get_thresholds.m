@@ -20,6 +20,10 @@ for i = 1 : num_vars
     range(i) = max_data(i)-min_data(i);
     temp=min_data(i):(range(i)/num_levels(i)):max_data(i);
     thr_data{i,1} = temp(2:end-1);
+    
+    if max_data(i)==min_data(i)
+        thr_data{i,1}=0.5;
+    end
 end
 
 end

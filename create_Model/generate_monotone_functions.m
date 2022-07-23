@@ -15,7 +15,6 @@ for i=1:num_timecourses
     X=[X; time_course(1:end-1,:)];
     FX=[FX; time_course(2:end,:)];
 end
-
 num_vars=size(X,2);
 
 num_states=zeros(1,num_vars);
@@ -47,7 +46,7 @@ end
 
 %function to create truth table for one variable
 function [TTinputs,TTlow,TThigh]=create_monotone_local(localX,V,localNumStates,numstates,localW)
-  
+
 localn=size(localX,2);
 
 TTinputs=zeros(prod(localNumStates),localn);
