@@ -15,7 +15,8 @@ generate_wiring_diagrams(file_for_disc_data,file_for_wiring_diagrams)
 
 %% select wiring diagram
 addpath('select_WD')
-W=select_best_wiring_diagram(file_for_wiring_diagrams);
+threshold=1/2
+W=select_best_wiring_diagram(file_for_wiring_diagrams,threshold);
 
 %% create model
 file_for_model='model0.mat';
